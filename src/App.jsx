@@ -1,27 +1,18 @@
-import { useState } from 'react'
-import General from './components/General.jsx'
-import Education from './components/education.jsx'
-import Experience from './components/experience.jsx'
-import DisplayData from './components/displayData.jsx'
-import './styles/App.css'
+import React, { useState } from "react";
+import EditData from "./components/editData.jsx";
+import DisplayData from "./components/displayData.jsx";
+import "./App.css";
 
 function App() {
-
   return (
-    <>
+    <div className="main-panel">
 
-      <div className='editData'>
-
-        <General />
-        <Education />
-        <Experience />
-
-      </div>
+      <EditData />
 
       <DisplayData />
-
-    </>
-  )
+      
+    </div>
+  );
 }
 
-export default App
+export default App;

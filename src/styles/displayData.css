@@ -1,0 +1,41 @@
+.display-data {
+    color: #213547;
+    background-color: white;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.page {
+    width: 800px;
+    box-shadow: 0 0 20px gray;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+.header {
+    padding: 10px;
+}
+
+h1 {
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    display: grid;
+    grid-template: 50% 50% / 50% 50%;
+}
+
+ul > li {
+    font-size: 12px;
+}
+
+ul > .left-social {
+    text-align: right;
+    padding-right: 10px;
+}
+
+.section {
+    padding: 20px 0;
+}
