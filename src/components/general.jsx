@@ -1,34 +1,18 @@
-import React, { useState } from "react";
 
-const initialPerson = {
-  name: "John Doe",
-  email: "john@doe.mail",
-  phone: "1234567",
-  github: "guthib.com",
-  behance: "behance.net",
-  about: "Lorem ipsum dolor sit..."
-}
-
-function General() { 
-  
-  const [person, setPerson] = useState(initialPerson);
+function General({ initialGeneral, handleUpdateGeneral, capitalizeFirstLetter}) { 
 
   function handleChange(fieldName, value) {
-    setPerson(prevPerson => ({
-      ...prevPerson,
+    handleUpdateGeneral({
+      ...initialGeneral,
       [fieldName]: value
-    }));
-  }
+    });
+  };
 
-  function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
-
-  const list = Object.keys(person).map((key) => (
+  const list = Object.keys(initialGeneral).map((key) => (
     <div key={key}>
       <p>{capitalizeFirstLetter(key)}</p>
       <input
-        value={person[key]}
+        value={initialGeneral[key]}
         onChange={(e) => {
           handleChange(key, e.target.value);
         }}

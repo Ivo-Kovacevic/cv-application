@@ -1,32 +1,18 @@
-import React, { useState } from "react";
 
-const initialExperience = {
-  company: "Goooooogl",
-  role: "CEO",
-  startYear: "2020",
-  endYear: "2022"
-}
-
-function Experience() {  
-
-  const [experience, setExperience] = useState(initialExperience);
+function Experience({ initialExperience, handleUpdateExperience, capitalizeFirstLetter }) {  
 
   function handleChange(fieldName, value) {
-    setExperience(prevExperience => ({
-      ...prevExperience,
+    handleUpdateExperience({
+      ...initialExperience,
       [fieldName]: value
-    }));
+    });
   }
 
-  function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
-
-  const list = Object.keys(experience).map((key) => (
+  const list = Object.keys(initialExperience).map((key) => (
     <div key={key}>
       <p>{capitalizeFirstLetter(key)}</p>
       <input
-        value={experience[key]}
+        value={initialExperience[key]}
         onChange={(e) => {
           handleChange(key, e.target.value);
         }}

@@ -1,10 +1,46 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import General from './general.jsx'
 import Education from './education.jsx'
 import Experience from './experience.jsx'
 import "../styles/editData.css";
 
-function EditData() {
+function EditData({ initialPerson, handleUpdatePerson }) {
+
+    const [person, setPerson] = useState(initialPerson);
+
+    function handleUpdateGeneral(updatedGeneral) {
+        const updatedPerson = {
+            ...person,
+            general: {...updatedGeneral }
+        };
+        setPerson(updatedPerson);
+        handleUpdatePerson(updatedPerson);
+    };
+
+    function handleUpdateEducation(updatedEducation) {
+        const updatedPerson = {
+            ...person,
+            education: {...updatedEducation }
+        };
+        setPerson(updatedPerson);
+        handleUpdatePerson(updatedPerson);
+    };
+
+    function handleUpdateExperience(updatedExperience) {
+        const updatedPerson = {
+            ...person,
+            experience: {...updatedExperience }
+        };
+        setPerson(updatedPerson);
+        handleUpdatePerson(updatedPerson);
+    };
+
+
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
+
     return (
 
         <div className="edit-data">
@@ -13,15 +49,22 @@ function EditData() {
 
                 <h1>CV application</h1>
 
-                <General />
-                <Education />
-                <Experience />
-
-                <br></br>
-                <br></br>
-
-                <button type="submit" className="submit">SUBMIT</button>
-
+                <General
+                    initialGeneral={person.general}
+                    handleUpdateGeneral={handleUpdateGeneral}
+                    capitalizeFirstLetter={capitalizeFirstLetter}
+                />
+                <Education
+                    initialEducation={person.education}
+                    handleUpdateEducation={handleUpdateEducation}
+                    capitalizeFirstLetter={capitalizeFirstLetter}
+                />
+                <Experience
+                    initialExperience={person.experience}
+                    handleUpdateExperience={handleUpdateExperience}
+                    capitalizeFirstLetter={capitalizeFirstLetter}
+                />
+                
             </form>
 
         </div>
