@@ -28,3 +28,7 @@ input {
     color: white;
     background-color: #2a4721;
 }
+
+.input-paragraph {
+    margin-bottom: 20px;
+}

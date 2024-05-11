@@ -4,7 +4,6 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -50,15 +49,27 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: white;
   cursor: pointer;
   transition: border-color 0.25s;
+  width: 100%;
 }
 button:hover {
-  border-color: #646cff;
+  transition: 0.2s;
+  background-color: #213547;
+  color: white;
+  border-color: white;
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.remove {
+  color: red;
+}
+.remove:hover {
+  transition: 0.2s;
+  color: white;
+  background-color: red;
+}

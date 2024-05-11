@@ -1,6 +1,31 @@
 import "../styles/displayData.css";
 
 function DisplayData({person}) {  
+
+    const educationList = (
+        <div className="section" id="education">
+            <h2>Education</h2>
+            {person.education.map((education, index) => (
+                <div key={index} className="paragraph">
+                    <p>{education.startYear}-{education.endYear}</p>
+                    <h4>{education.school}</h4>
+                </div>
+            ))}
+        </div>
+    );
+
+    const experienceList = (
+        <div className="section" id="experience">
+            <h2>Experience</h2>
+            {person.experience.map((experience, index) => (
+                <div key={index} className="paragraph">
+                    <p>{experience.startYear}-{experience.endYear}</p>
+                    <h4>{experience.role}, {experience.company}</h4>
+                </div>
+            ))}
+        </div>
+    );
+
     return (
 
       <div className="display-data">
@@ -24,17 +49,9 @@ function DisplayData({person}) {
                 <p>{person.general.about}</p>
             </div>
 
-            <div className="section" id="education">
-                <h2>Education</h2>
-                <p>{person.education.startYear}-{person.education.endYear}</p>
-                <h4>{person.education.school}</h4>
-            </div>
+            {educationList}
 
-            <div className="section" id="experience">
-                <h2>Experience</h2>
-                <p>{person.experience.startYear}-{person.experience.endYear}</p>
-                <h4>{person.experience.role}, {person.experience.company}</h4>
-            </div>
+            {experienceList}
 
         </div>
 

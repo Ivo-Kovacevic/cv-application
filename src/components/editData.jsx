@@ -20,7 +20,7 @@ function EditData({ initialPerson, handleUpdatePerson }) {
     function handleUpdateEducation(updatedEducation) {
         const updatedPerson = {
             ...person,
-            education: {...updatedEducation }
+            education: updatedEducation
         };
         setPerson(updatedPerson);
         handleUpdatePerson(updatedPerson);
@@ -29,7 +29,7 @@ function EditData({ initialPerson, handleUpdatePerson }) {
     function handleUpdateExperience(updatedExperience) {
         const updatedPerson = {
             ...person,
-            experience: {...updatedExperience }
+            experience: updatedExperience
         };
         setPerson(updatedPerson);
         handleUpdatePerson(updatedPerson);
@@ -54,11 +54,15 @@ function EditData({ initialPerson, handleUpdatePerson }) {
                     handleUpdateGeneral={handleUpdateGeneral}
                     capitalizeFirstLetter={capitalizeFirstLetter}
                 />
+
+                <h2>Education</h2>
                 <Education
                     initialEducation={person.education}
                     handleUpdateEducation={handleUpdateEducation}
                     capitalizeFirstLetter={capitalizeFirstLetter}
                 />
+
+                <h2>Experience</h2>
                 <Experience
                     initialExperience={person.experience}
                     handleUpdateExperience={handleUpdateExperience}

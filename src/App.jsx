@@ -8,23 +8,27 @@ function App() {
   const initialPerson = {
     general: {
       name: "John Doe",
-      location: "Croatia",
-      email: "john@doe.mail",
+      location: "Country",
+      email: "Email",
       github: "guthib.com",
       behance: "behance.net",
       about: "Lorem ipsum dolor sit..."
     },
-    education: {
-      school: "Community college",
-      startYear: "2016",
-      endYear: "2020"
-    },
-    experience: {
-      company: "Goooooogl",
-      role: "CEO",
-      startYear: "2020",
-      endYear: "2022"
-    }
+    education: [
+      {
+        school: "School name",
+        startYear: "Start year",
+        endYear: "End year"
+      }
+    ],
+    experience: [
+      {
+        company: "Company name",
+        role: "Role",
+        startYear: "Start year",
+        endYear: "End year"
+      }
+    ]
   };
 
   const [person, setPerson] = useState(initialPerson);

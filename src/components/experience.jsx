@@ -1,31 +1,50 @@
 
 function Experience({ initialExperience, handleUpdateExperience, capitalizeFirstLetter }) {  
 
-  function handleChange(fieldName, value) {
-    handleUpdateExperience({
-      ...initialExperience,
+  function handleChange(index, fieldName, value) {
+    const updatedExperience = [...initialExperience];
+    updatedExperience[index] = {
+      ...initialExperience[index],
       [fieldName]: value
-    });
+    };
+    handleUpdateExperience(updatedExperience);
   }
 
-  const list = Object.keys(initialExperience).map((key) => (
-    <div key={key}>
-      <p>{capitalizeFirstLetter(key)}</p>
-      <input
-        value={initialExperience[key]}
-        onChange={(e) => {
-          handleChange(key, e.target.value);
-        }}
-      />
+  function handleAddExperience(e) {
+    e.preventDefault();
+    const newExperience = {
+      company: "Company name",
+      role: "Role",
+      startYear: "Start year",
+      endYear: "End year"
+    };
+    const updatedExperience = [...initialExperience, newExperience];
+    handleUpdateExperience(updatedExperience);
+  }
+
+  const list = initialExperience.map((experience, index) => (
+    <div key={index} className="input-paragraph">
+      {Object.keys(experience).map((key) => (
+        <div key={key}>
+          <p>{capitalizeFirstLetter(key)} {key === 'company' && ` ${index + 1}`}</p>
+          <input
+            value={experience[key]}
+            onChange={(e) => {
+              handleChange(index, key, e.target.value); // Pass both index and key to handleChange
+            }}
+          />
+        </div>
+      ))}
+      <button className="remove" type="button">REMOVE EXPERIENCE</button>
     </div>
   ));
 
   return (
     <>
 
-      <h2>Experience</h2>
-
       {list}
+
+      <button type="button" onClick={handleAddExperience}>ADD EXPERIENCE</button>
 
     </>
   );
