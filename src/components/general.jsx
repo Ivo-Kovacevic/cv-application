@@ -1,20 +1,20 @@
 
 function General({ initialGeneral, handleUpdateGeneral, capitalizeFirstLetter}) { 
 
-  function handleChange(fieldName, value) {
+  function handleInputChange(fieldName, value) {
     handleUpdateGeneral({
       ...initialGeneral,
       [fieldName]: value
     });
   };
 
-  const list = Object.keys(initialGeneral).map((key) => (
+  const generalInputList = Object.keys(initialGeneral).map((key) => (
     <div key={key}>
       <p>{capitalizeFirstLetter(key)}</p>
       <input
         value={initialGeneral[key]}
         onChange={(e) => {
-          handleChange(key, e.target.value);
+          handleInputChange(key, e.target.value);
         }}
       />
     </div>
@@ -25,7 +25,7 @@ function General({ initialGeneral, handleUpdateGeneral, capitalizeFirstLetter}) 
 
       <h2>General</h2>
 
-      {list}
+      {generalInputList}
 
     </>
   );

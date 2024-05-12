@@ -41,7 +41,7 @@ function App() {
     <div className="main-panel">
 
       <EditData
-        initialPerson={initialPerson}
+        initialPerson={person}
         handleUpdatePerson={handleUpdatePerson}
       />
 

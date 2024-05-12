@@ -1,7 +1,7 @@
 
 function Experience({ initialExperience, handleUpdateExperience, capitalizeFirstLetter }) {  
 
-  function handleChange(index, fieldName, value) {
+  function handleInputChange(index, fieldName, value) {
     const updatedExperience = [...initialExperience];
     updatedExperience[index] = {
       ...initialExperience[index],
@@ -10,8 +10,7 @@ function Experience({ initialExperience, handleUpdateExperience, capitalizeFirst
     handleUpdateExperience(updatedExperience);
   }
 
-  function handleAddExperience(e) {
-    e.preventDefault();
+  function handleAddExperience() {
     const newExperience = {
       company: "Company name",
       role: "Role",
@@ -22,7 +21,13 @@ function Experience({ initialExperience, handleUpdateExperience, capitalizeFirst
     handleUpdateExperience(updatedExperience);
   }
 
-  const list = initialExperience.map((experience, index) => (
+  function handleRemoveExperience(index) {
+    const updatedExperience = [...initialExperience];
+    updatedExperience.splice(index, 1);
+    handleUpdateExperience(updatedExperience);
+  }
+
+  const experienceInputList = initialExperience.map((experience, index) => (
     <div key={index} className="input-paragraph">
       {Object.keys(experience).map((key) => (
         <div key={key}>
@@ -30,19 +35,19 @@ function Experience({ initialExperience, handleUpdateExperience, capitalizeFirst
           <input
             value={experience[key]}
             onChange={(e) => {
-              handleChange(index, key, e.target.value); // Pass both index and key to handleChange
+              handleInputChange(index, key, e.target.value);
             }}
           />
         </div>
       ))}
-      <button className="remove" type="button">REMOVE EXPERIENCE</button>
+      <button className="remove" type="button" onClick={handleRemoveExperience}>REMOVE EXPERIENCE {index + 1}</button>
     </div>
   ));
 
   return (
     <>
 
-      {list}
+      {experienceInputList}
 
       <button type="button" onClick={handleAddExperience}>ADD EXPERIENCE</button>
 

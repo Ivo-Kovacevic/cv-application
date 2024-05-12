@@ -1,27 +1,32 @@
 
 function Education({ initialEducation, handleUpdateEducation, capitalizeFirstLetter }) {
 
-    function handleChange(index, fieldName, value) {
-      const updatedEducation = [...initialEducation];
-      updatedEducation[index] = {
-        ...updatedEducation[index],
-        [fieldName]: value
-      };
-      handleUpdateEducation(updatedEducation);
-    }
+  function handleInputChange(index, fieldName, value) {
+    const updatedEducation = [...initialEducation];
+    updatedEducation[index] = {
+      ...updatedEducation[index],
+      [fieldName]: value
+    };
+    handleUpdateEducation(updatedEducation);
+  }
 
-    function handleAddEducation(e) {
-      e.preventDefault();
-      const newEducation = {
-        school: "School name",
-        startYear: "Start year",
-        endYear: "End year"
-      };
-      const updatedEducation = [...initialEducation, newEducation];
-      handleUpdateEducation(updatedEducation);
-    }
+  function handleAddEducation() {
+    const newEducation = {
+      school: "School name",
+      startYear: "Start year",
+      endYear: "End year"
+    };
+    const updatedEducation = [...initialEducation, newEducation];
+    handleUpdateEducation(updatedEducation);
+  }
 
-  const list = initialEducation.map((education, index) => (
+  function handleRemoveEducation(index) {
+    const updatedEducation = [...initialEducation];
+    updatedEducation.splice(index, 1);
+    handleUpdateEducation(updatedEducation);
+  }
+
+  const educationInputList = initialEducation.map((education, index) => (
     <div key={index} className="input-paragraph">
       {Object.keys(education).map((key) => (
         <div key={key}>
@@ -29,18 +34,20 @@ function Education({ initialEducation, handleUpdateEducation, capitalizeFirstLet
           <input
             value={education[key]}
             onChange={(e) => {
-              handleChange(index, key, e.target.value);
+              handleInputChange(index, key, e.target.value);
             }}
           />
         </div>
       ))}
-      <button className="remove" type="button">REMOVE EDUCATION</button>
+      <button className="remove" type="button" onClick={handleRemoveEducation}>REMOVE EDUCATION {index + 1}</button>
     </div>
   ));
 
   return (
     <>
-      {list}
+
+      {educationInputList}
+      
       <button className="add" type="button" onClick={handleAddEducation}>ADD EDUCATION</button>
     </>
   );

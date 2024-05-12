@@ -1,4 +1,3 @@
-import { useState } from "react";
 import General from './general.jsx'
 import Education from './education.jsx'
 import Experience from './experience.jsx'
@@ -6,32 +5,27 @@ import "../styles/editData.css";
 
 function EditData({ initialPerson, handleUpdatePerson }) {
 
-    const [person, setPerson] = useState(initialPerson);
-
     function handleUpdateGeneral(updatedGeneral) {
         const updatedPerson = {
-            ...person,
-            general: {...updatedGeneral }
-        };
-        setPerson(updatedPerson);
+            ...initialPerson,
+            general: { ...updatedGeneral }
+        };        
         handleUpdatePerson(updatedPerson);
     };
 
     function handleUpdateEducation(updatedEducation) {
         const updatedPerson = {
-            ...person,
+            ...initialPerson,
             education: updatedEducation
         };
-        setPerson(updatedPerson);
         handleUpdatePerson(updatedPerson);
     };
 
     function handleUpdateExperience(updatedExperience) {
         const updatedPerson = {
-            ...person,
+            ...initialPerson,
             experience: updatedExperience
         };
-        setPerson(updatedPerson);
         handleUpdatePerson(updatedPerson);
     };
 
@@ -50,21 +44,21 @@ function EditData({ initialPerson, handleUpdatePerson }) {
                 <h1>CV application</h1>
 
                 <General
-                    initialGeneral={person.general}
+                    initialGeneral={initialPerson.general}
                     handleUpdateGeneral={handleUpdateGeneral}
                     capitalizeFirstLetter={capitalizeFirstLetter}
                 />
 
                 <h2>Education</h2>
                 <Education
-                    initialEducation={person.education}
+                    initialEducation={initialPerson.education}
                     handleUpdateEducation={handleUpdateEducation}
                     capitalizeFirstLetter={capitalizeFirstLetter}
                 />
 
                 <h2>Experience</h2>
                 <Experience
-                    initialExperience={person.experience}
+                    initialExperience={initialPerson.experience}
                     handleUpdateExperience={handleUpdateExperience}
                     capitalizeFirstLetter={capitalizeFirstLetter}
                 />
@@ -76,5 +70,4 @@ function EditData({ initialPerson, handleUpdatePerson }) {
     );
   }
   
-  export default EditData;
-  
+export default EditData;  
