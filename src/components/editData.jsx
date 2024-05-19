@@ -63,6 +63,8 @@ function EditData({ initialPerson, handleUpdatePerson }) {
                     capitalizeFirstLetter={capitalizeFirstLetter}
                 />
                 
+                <button className="edit" type="button">EDIT</button>
+                <button className="submit" type="button">SUBMIT</button>
             </form>
 
         </div>
